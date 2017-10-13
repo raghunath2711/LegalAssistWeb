@@ -1,0 +1,364 @@
+﻿<headerDiv></headerDiv>
+<section id="tabcontent">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="resources">
+            <div class="tab-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1>Resources and Information</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row list-container" id="Slide1" [ngClass]="{'activeSlide': activeSld=='Slide1','hideSlide': activeSld!='Slide1'}">
+                    <div class="col-md-6 col-md-offset-3 faq-list">
+                        <div class="item guided text-center">
+                            <h2 class="m-bottom-20">Guided Assistent</h2>
+                            <p class="font16">We would like to make your search easier by providing a few simple steps.</p>
+                            <button class="btn lp-btn-3 active m-top-40" type="button" (click)="ShowNextNavigation('Slide2')" [routerLink]="['/guided/assist/evictionnotice']">Begin</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="Slide2" class="list-container" [ngClass]="{'activeSlide': activeSld=='Slide2','hideSlide': activeSld!='Slide2'}">
+                    <div class="row faq-list">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="item text-center">
+                                <h4>Have you received and eviction notice ?</h4>
+                                <div class="rdo-group">
+                                    <button class="btn btn-default lp-btn-4 m-right-10" type="button" data-slide="next" [routerLink]="['/guided/assist/housingproblem']" (click)="ShowNextNavigation('Slide5')" href="#myCarousel">No</button>
+
+                                    <button class="btn btn-default lp-btn-4 active" type="button" data-slide="next" href="#myCarousel" [routerLink]="['/guided/assist/aboutnotice']" (click)="ShowNextNavigation('Slide3')">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel" [routerLink]="['/guided/assist/begin']" (click)="ShowNextNavigation('Slide1')">Back</button>
+
+                    </div>
+                </div>
+                <div id="Slide3" class="list-container" [ngClass]="{'activeSlide': activeSld=='Slide3','hideSlide': activeSld!='Slide3'}">
+                    <div class="row faq-list">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 faq-list">
+                                <div class="item active text-center">
+                                    <h4>Tell me more about your eviction notice</h4>
+                                    <div class="rdo-group text-align-left">
+                                        <label class="radio-inline">
+                                            <input type="radio" id="radio1" name="rr" />
+                                            <label for="radio1"><span></span>I need help understanding the notice</label>
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" id="radio2" name="rr" />
+                                            <label for="radio2"><span></span>I need to talk to someone for assistance</label>
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" id="radio3" name="rr" />
+                                            <label for="radio3"><span></span>I have children and pay the rent</label>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel" [routerLink]="['/guided/assist/evictionnotice']"  (click)="ShowNextNavigation('Slide2')">Back</button>
+                            <button class="right pull-right btn lp-btn-3 active" type="button" data-slide="next" href="#myCarousel" [routerLink]="['/guided/assist/assistnotice']"  (click)="ShowNextNavigation('Slide4')">Next</button>
+                            <button class="right pull-right btn btn-link lnk-btn" type="button" data-slide="next" href="#myCarousel" [routerLink]="['/guided/assist/assistnotice']"  (click)="ShowSkipNavigation('Slide4')">Skip</button>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div id="Slide4" class="list-container" [ngClass]="{'activeSlide': activeSld=='Slide4','hideSlide': activeSld!='Slide4'}">
+                    <div class="row faq-list">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="item active text-center">
+                                <h4>Have can assist you with your notice ?</h4>
+                                <div class="rdo-group text-align-left">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="radio4" name="scan" />
+                                        <label for="radio4"><span></span>Scan your notice ?</label>
+                                        <input type="radio" id="radio5" name="scan" />
+                                        <label for="radio5"><span></span>Chat with representative</label>
+                                        <input type="radio" id="radio6" name="scan" />
+                                        <label for="radio6"><span></span>Call the eviction hotline</label>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  [routerLink]="['/guided/assist/aboutnotice']" (click)="ShowNextNavigation('Slide3')">Back</button>
+                        <a class="right pull-right btn lp-btn-3 active" type="button" routerLink="/timeline">Next</a>
+                        <!--<button class="right pull-right btn btn-link lnk-btn" type="button" data-slide="next" href="#myCarousel" onclick="return false;">Skip</button>-->
+                    </div>
+                </div>
+
+                <div id="Slide5" class="list-container" [ngClass]="{'activeSlide': activeSld=='Slide5','hideSlide': activeSld!='Slide5'}">
+                    <div class="row faq-list">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="item active text-center">
+                                    <h4>Which of these is your housing problem?</h4>
+                                    <div class="rdo-group text-align-left">
+                                        <label class="radio-inline">
+                                            <input type="radio" id="radio7" name="rr" />
+                                            <label for="radio7"><span></span>My rental is in poor condition</label>
+                                            <input type="radio" id="radio8" name="rr" />
+                                            <label for="radio8"><span></span>My land lord is abusive</label>
+                                            <input type="radio" id="radio9" name="rr" />
+                                            <label for="radio9"><span></span>I have dispute with my neighbour</label>
+                                            <input type="radio" id="radio10" name="rr" />
+                                            <label for="radio10"><span></span>My landlord has raised my rent</label>
+                                            <input type="radio" id="radio11" name="rr" />
+                                            <label for="radio11">
+                                                <span></span>My land lord has changed the rental rules
+                                            </label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  [routerLink]="['/guided/assist/evictionnotice']"  (click)="ShowNextNavigation('Slide2')">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="resources_content" id="Downsection" [ngClass]="{'hideSlide': myClass=='up','activeSlide': myClass=='down'}">
+    <div class="arrow-up-down">
+        <a  (click)="ValidateContent('up');" style="cursor:pointer"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    </div>
+    <div class="container rel-topics">
+        <div class="row">
+            <h1>Most Related Topics Based on Your Search</h1>
+            <p class="m-top-20">
+                In this section you will find general information, resources and self-help packets on eviction issues
+            </p>
+        </div>
+        <div class="row m-top-40">
+            <div class="col-md-3 col-xs-12">
+                <div class="topics-box">
+                    <div class="header-img">
+                        <h3>Eviction in Washington State</h3>
+
+                    </div>
+                    <div class="box-para">
+                        Read about the rules landlords have to follow if they want you to move out.  Find resources that explain the eviction process, your rights as a tenant and how to respond if you receive an eviction notice. Start by watching our
+
+                        <a href="#">short video</a>.
+                    </div>
+                    <div class="text-center box-btn-align">
+                        <button class="btn btn-resources" type="button">MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="topics-box">
+                    <div class="header-img">
+                        <h3>Eviction in Washington State</h3>
+
+                    </div>
+                    <div class="box-para">For assistance with eviction go to  <a href="#">Washington State 211</a> or 2-1-1 from a landline, 206-461-3200 or 800-621-4636 or 206-461-3610 for TTY/hearing impaired calls. The staff will tell you about agencies that can help you. They can also refer you to other resources such as financial education classes.</div>
+                    <div class="text-center box-btn-align">
+                        <button class="btn btn-resources" type="button">MORE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="topics-box box-min-height">
+                    <h4>Chat!</h4>
+                    <div class="chat pad-22">Chat text - "Questions?  We can help, talk to our customer support service"</div>
+                    <div class="text-center">
+                        <i class="fa fa-comments fa-comnts" aria-hidden="true"></i>
+                    </div>
+                    <div class="box-para timer text-center">24/7</div>
+                    <div class="text-center box-btn-align">
+                        <a class="btn btn-resources" routerLink="/chat">CHAT NOW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="topics-box">
+                    <h4 class="side-notify">Eviction Help Line</h4>
+                    <div class="pad-22 m-b-33">
+                        <b>Eviction Help Line</b> (813) 991-0267. You Stop <b>Eviction</b>. Don't get locked out of your <b>home</b>, let us <b>help</b> you delay your eviction. ...
+                    </div>
+                    <h4 class="text-center font-30">206.404.0002</h4>
+                    <div class="box-para1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="m-top-85">
+            <h1>FORMS/STEPS</h1>
+            <p class="m-top-20">
+                Click to see information on legal steps and Access the forms you will need where you can get help.
+            </p>
+
+            <div class="row m-top-46">
+                <div class="col-md-6 p-left-10 p-right-10">
+                    <div class="short-des">
+                        <i class="fa fa-list-ul short-dec-icon1 visible-xs" aria-hidden="true"></i>
+                        <h1>Short Description of Process Title</h1>
+                        <p class="p-top-7 hidden-xs">consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua…</p>
+                        <div class="text-right m-top-40">
+                            <i class="fa fa-list-ul short-dec-icon1 hidden-xs" aria-hidden="true"></i>
+                            <a class="btn btn-resources" routerLink="/timeline">MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-left-10 p-right-10">
+                    <div class="short-des">
+                        <i class="fa fa-file-text-o short-dec-icon1 visible-xs" aria-hidden="true"></i>
+                        <h1>Short Description of Form Title</h1>
+                        <p class="p-top-7 hidden-xs">consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua…</p>
+                        <div class="text-right m-top-40">
+                            <i class="fa fa-file-text-o short-dec-icon1 hidden-xs" aria-hidden="true"></i>
+                            <a class="btn btn-resources" routerLink="/doc">MORE</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="m-top-85">
+            <h1>Links To Sub-Categories of This Category</h1>
+            <div class="row m-top-46">
+                <div class="col-xs-12 tagBadges">
+
+                    <span class="tag-badge" id="tenant" [ngClass]="{'activeBadge': aciveBdg=='tenant'}" (click)="displayText('tenant')" [routerLink]="['/guided/tenantrights']">Tenant’s Rights</span>
+                    <span class="tag-badge" id="foreclosure" [ngClass]="{'activeBadge': aciveBdg=='foreclosure'}" (click)="displayText('foreclosure')" [routerLink]="['/guided/foreclosure']">Foreclosure</span>
+                    <span class="tag-badge" id="emergency" [ngClass]="{'activeBadge': aciveBdg=='emergency'}" (click)="displayText('emergency')" [routerLink]="['/guided/emergencyshelter']">Emergency Shelters and Assistance</span>
+                    <span class="tag-badge" id="mobile" [ngClass]="{'activeBadge': aciveBdg=='mobile'}" (click)="displayText('mobile')" [routerLink]="['/guided/mobileparktenants']">Mobile Park Tenants</span>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 m-top-85 imgTxt">
+            <h1>Image With Text</h1>
+            <div class="col-xs-12 m-top-40">
+                <div class="img-left-width"></div>
+                <span id="lnkText">{{text}}</span>
+            </div>
+        </div>
+
+        <div class="m-top-85">
+            <h1>Accordion for Q&A </h1>
+            <p class="m-top-20">
+                The following commonly asked questions may provide you with further assistance
+            </p>
+            <div class="row"  id="QandA">
+                <div class="col-xs-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default" id="headingOne">
+                            <div class="panel-heading" role="tab"  (click)="collapsed('collapseOne')" [routerLink]="['/guided/QandA/1']" >
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Do I have to move out within three days if my landlord serves me a 3-day pay or vacate notice?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne"  class="panel-collapse" [ngClass]="[OneClass]" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    No, though some tenants may choose to vacate during the 3-day timeframe. Your landlord cannot evict you from your unit without going through a court process. It is illegal for your landlord to lock you out of your unit, remove your belongings or shut off your utilities, even if you are behind in rent. Eviction in Washington State is called “unlawful detainer.” The unlawful detainer process generally takes about 2-3 weeks from start to finish. Some tenants choose to leave within the 3-day timeline because vacating may allow them to avoid the eviction lawsuit. The landlord may still be able to file a lawsuit against them or send them to collections in an attempt to recover money they owe
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" id="headingTwo">
+                            <div class="panel-heading" role="tab"  (click)="collapsed('collapseTwo')" [routerLink]="['/guided/QandA/2']">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+
+                                        How long does it take to evict a tenant in Washington State?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse" [ngClass]="[TwoClass]" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="true">
+                                <div class="panel-body">
+                                    Generally around three weeks (from the time rent is due until the time the sheriff will come out and enforce the writ), though the timeframe can vary greatly depending upon the circumstances. See Eviction Timeline for a sample eviction process.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" id="headingThree" >
+                            <div class="panel-heading" role="tab" (click)="collapsed('collapseThree')" [routerLink]="['/guided/QandA/3']">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+                                        Does the law entitle me to a certain number of days grace period after the day my rent is due?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse" [ngClass]="[ThreeClass]" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    No. However, most rental agreements indicate a due date for the rent, usually the first of the month, and some indicate a grace period before the rent is to be considered late, usually three to five days later. The landlord-tenant act in Washington State does not specifically entitle tenants to a grace period of any kind
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" id="headingFour">
+                            <div class="panel-heading" role="tab"  (click)="collapsed('collapseFour')" [routerLink]="['/guided/QandA/4']">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+
+                                        Can I negotiate with the landlord to stop an eviction?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse" [ngClass]="[FourClass]" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    Tenants can negotiate directly with their landlord to stop the eviction at any point, though it is generally more productive for tenants the earlier in the process it happens. It is very important that any agreement you come to with your landlord must be in writing, signed and dated by both parties.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="m-top-85" [routerLink]="['/guided/videos']" style="cursor:pointer" id="videos">
+            <h1>Video Component for Videos</h1>
+            <p class="m-top-20">This video explains different kinds of termination notices</p>
+            <div class="row m-top-40">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/c_vYlZK6rvw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-top-85" [routerLink]="['/guided/maps']" id="maps" style="cursor:pointer">
+            <h1>Maps for Locations</h1>
+            <p class="m-top-20">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim…tempor incididunt utlabore et dolore magna aliqua. Ut enim ad minim</p>
+        </div>
+    </div>
+    <div class="container m-top-40">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2775832.4157781773!2d-122.40028915806761!3d47.20143890666706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sLegal+help+in+Washington+states!5e0!3m2!1sen!2sin!4v1498039664011" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <footerDiv></footerDiv>
+</section>
+
+<section class="resources_content2" id="Upsection"  [ngClass]="{'activeSlide': myClass=='up','hideSlide': myClass=='down'}">
+    <div class="arrow-up-down">
+        <a (click)="ValidateContent('down');" style="cursor:pointer"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+    </div>
+</section>
