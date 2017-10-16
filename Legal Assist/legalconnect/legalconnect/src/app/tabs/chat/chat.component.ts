@@ -1,4 +1,4 @@
-﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
+﻿import { Component, EventEmitter, Input, Output, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search.service';
 
@@ -12,8 +12,8 @@ export class ChatComponent {
     lang: string="en";
     selectedCountry: string = " ";
     isVisible:boolean = true;
-   
-    constructor(private srchServ: SearchService) { }
+    showMessage: boolean = false;
+    constructor(private srchServ: SearchService, private router: Router) {  }
     onChange(files: FileList) {
         this.files = files;
 
@@ -42,8 +42,7 @@ export class ChatComponent {
 
 
     reply() {
-
-        //alert(this.selectedCountry)
+       
         this.isVisible = false;
         var dt = new Date();
         var time = dt.getHours() + ":" + dt.getMinutes();
@@ -54,11 +53,11 @@ export class ChatComponent {
             "class":"sent",
         })
         var query = this.replyMessage;
-   
+        this.showMessage = true;
         this.srchServ.getLocation().subscribe(
             (resCountry) => {
                 this.geoCountry = resCountry.region; 
-                console.log(this.geoCountry);
+              
                 this.srchServ.getChatMessages(query, this.lang, this.selectedCountry == " " ? this.geoCountry : this.selectedCountry).subscribe(
                     (res) => {
                         var dt = new Date();
@@ -71,44 +70,32 @@ export class ChatComponent {
                                 "class": "receive"
                             })
                         }, 1000);
-                        //var dt = new Date();
-                        //var time = dt.getHours() + ":" + dt.getMinutes();
-                        //var para = res.split("<br/><br/>")[0];
-                        //var ind = res.index("<br/>");
-                        //while (ind > 0) {
-                           
-                        //    var para = res.substring(0, ind);
-                        //    setTimeout(() => {
-                        //        this.messages.push({
-                        //            "text": para,
-                        //            "self": true,
-                        //            "time": time,
-                        //            "class": "receive"
-                        //        })
-                        //    }, 1000);
-                        //    res = res.replace(para, '');
-                        //    ind = res.index("<br/>")
-                        //}
+                        this.showMessage = false;
+                       
                       
                     },
-                 (err:any) => {
+                    (err: any) => {
+                     this.showMessage = false;
                      console.log(err);  
-                     alert('No Data Found For Location ' + this.geoCountry);
+                     alert('No data found for location ' + this.geoCountry +' choose country from dropdown');
+               
                     });
+
+                this.srchServ.getChatReferences(query, this.selectedCountry == " " ? this.geoCountry : this.selectedCountry).subscribe((res) => {
+                    console.log(res);
+                    for (var i = 0; i < res.length; i++) {
+                        this.rightboxes.push({
+                            "url": res[i].Url,
+                            "text": res[i].Name,
+                            "self": true
+                        })
+                    }
+                });
             }
          
         );
         this.isVisible = true;
-        this.srchServ.getChatReferences(query, this.selectedCountry == " " ? this.geoCountry : this.selectedCountry).subscribe((res) => {
-            console.log(res);
-            for (var i = 0; i < res.length; i++) {
-                this.rightboxes.push({
-                    "url": res[i].Url,
-                    "text": res[i].Name,
-                    "self": true
-                })
-            }
-        });
+      
 
         this.replyMessage = "";
 
@@ -120,15 +107,5 @@ export class ChatComponent {
         this.lang = lang;
     }
 
-    //ngOnInit() {
-    //    this.srchServ.getLocation().subscribe((res) => { this.result = res; console.log(this.result.city) });
-    //    if (navigator.geolocation) {
-    //        navigator.geolocation.getCurrentPosition(position => {
-    //            this.location = position.coords;
-    //            console.log(position.coords);
-    //        });
-    //    }
-
-    //    //    this.srchServ.getLocation().map((res) => { this.result = res; console.log('region', this.result) });
-    //}
+    
 }

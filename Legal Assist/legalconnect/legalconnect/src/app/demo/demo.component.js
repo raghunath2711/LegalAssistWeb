@@ -22,12 +22,6 @@ var DemoComponent = (function () {
         // component
         //  .subscribe(people => this.people = people);
     }
-    DemoComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        //this.srchServ.getSearchUrls().subscribe((res) => { this.result= res });
-        this.srchServ.getSearchUrls().map(function (res) { _this.result = res; });
-        console.log(this.result);
-    };
     return DemoComponent;
 }());
 DemoComponent = __decorate([

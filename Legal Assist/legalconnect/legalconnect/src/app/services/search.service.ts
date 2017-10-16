@@ -17,10 +17,7 @@ export class SearchService {
     geoCountry: any;
 
     output: any;
-    public getSearchUrls(): Observable<any> {
-        return this._http.post(this.searchUrl, { Sentence: 'I can not pay my rent on time' }).map((res: Response) => (res.json()));
-          }
-
+  
     public getChatMessages(query:string, lang: string, country: string): Observable<any> {
    
         return this._http.post(this.chatMessageUrl, { Topic: query, Title: query, State: country }).map((res: Response) => (res.json()));
@@ -28,6 +25,7 @@ export class SearchService {
 
 
     public getChatReferences(query: string, country: string): Observable<any> {
+        console.log(country);
         return this._http.post(this.chatRefUrl, { Sentence: query, State: country}).map((res: Response) => (res.json()));
 
     }

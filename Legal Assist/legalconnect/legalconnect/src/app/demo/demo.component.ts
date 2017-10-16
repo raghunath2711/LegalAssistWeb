@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: './demo.component.html'
 })
 
-export class DemoComponent implements OnInit {
+export class DemoComponent  {
     result: any;
     constructor(private router: Router, private srchServ: SearchService) {
         //http.get('https://api.cognitive.microsoft.com/bing/v5.0/search?q=I am beign evictied&count=10&offset=0&mkt=en-us&safesearch=Moderate')
@@ -20,9 +20,4 @@ export class DemoComponent implements OnInit {
         //  .subscribe(people => this.people = people);
     }
 
-    ngOnInit() {
-        //this.srchServ.getSearchUrls().subscribe((res) => { this.result= res });
-        this.srchServ.getSearchUrls().map((res) => { this.result = res });
-        console.log(this.result);
-    }
 }

@@ -10,6 +10,7 @@
                         <div class="col-md-5 m-top-20">
                             <span class="col-md-1" style="line-height:32px; display:none;">Select</span>
                             <div class="col-md-4 btn-group m-left-10">
+                               
                                 <select [(ngModel)]="selectedCountry" >
                                     <option value="Alabama">Alabama (AL)</option>
                                     <option value="Alaska">Alaska (AK)</option>
@@ -78,16 +79,11 @@
                     <div class="row chat-window col-xs-12 col-md-12 m-top-30 m-bottom-30 m-t-b-30" id="chat_window_1">
                         <div class="col-xs-12 col-sm-12 col-md-6 m-0 p-0">
                             <div class="panel panel-default no-background no-border">
-                                <!-- <div class="panel-body chat_height" id="divChatControl">
-                                 </div>-->
+                             
 
                                 <div class="col-xs-12 left-chat-box">
                                     <div class="welCome">Welcome to Legal Assist</div>
-                                    <!--<div class="welCome">
-                                        Please chose your Language<br /><br />
-                                        <span class="tag-badge" id="link_1" [ngClass]="{'activeBadge': aciveBdg=='link_1'}" (click)="displayText('es')">En-ES</span>
-                                        <span class="tag-badge" id="link_2" [ngClass]="{'activeBadge': aciveBdg=='link_2'}" (click)="displayText('ja')">En-Ja</span>
-                                    </div>-->
+                              
 
                                     <div *ngFor="let message of messages" [class]="message.self">
                                         <span [class]="message.class">{{message.text}}<time datetime='2009-11-13T20:00' style="float:right">{{message.time}}</time></span>
@@ -98,21 +94,21 @@
 
                                     <div class="col-md-11 col-sm-11 col-xs-10 m-0 p-0 w-88">
 
-                                        <!--<input type="text" value="User is typing..." class="userTyp" />-->
-                                        <span class="userTyp" >User is typing...</span>
+                                       
+                                        <span class="userTyp" *ngIf="showMessage">User is typing...</span>
                                         <textarea id="btn-input" type="text" class="form-control" placeholder="Type here..." [(ngModel)]="replyMessage" name="replyMessage" style="height:70px;"
                                                   (keyup.enter)="reply()"></textarea>
-                                        <!--<input type="text" [(ngModel)] = "replyMessage" name="replyMessage" />-->
+                                     
 
                                     </div>
                                     <div class="col-md-1 col-sm-1 col-xs-1 mrg-lft p-0 m-l-10" style="margin-top:22px;">
-                                        <!--<a href="#" onclick="InputChatMsg();"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>-->
+                                    
                                         <a (click)="reply()"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
                                     </div>
                                     <div class="col-md-9 col-sm-9 col-xs-4">
                                         <label for="my-file-selector">
                                             <span class="fa fa-paperclip" aria-hidden="true" style="font-size:20px;margin-top:10px">
-                                                <!--<input id="my-file-selector" type="file" multiple style="display:none">-->
+                                               
                                                 <input id="my-file-selector" type="file" #file (change)="onChange(file.files)" multiple style="display:none" />
                                                 <input id="my-file-submitter" type="submit" style="visibility: hidden" />
 
@@ -129,6 +125,9 @@
                                             </span>
                                         </label>
                                     </div>
+                                 
+
+
                                 </div>
                                 <img src="" alt="" id="show-picture" style="width:20%;display:none">
                             </div>
@@ -143,12 +142,19 @@
                                             <div class="box_sent_sub">
                                                 <a href="{{rightbox.url}}" target='_blank'>
                                                     {{rightbox.text}}
+                                                 
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--<div *ngFor="let f of files" [class] = "rightbox.self">
+                                    <span class="box_sent2"><span class="box_sent_sub">{{f.name}}</span></span>
+                                     </div>-->
+                                <!-- <div class="panel-body msg_container_base col-xs-12" id="divRefControl">
+                                </div>-->
                             </div>
+
                         </div>
                     </div>
 

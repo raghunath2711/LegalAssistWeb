@@ -11,84 +11,142 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var MRSComponent = (function () {
-    function MRSComponent(router) {
+    function MRSComponent(router, aRoute, elementRef) {
         this.router = router;
+        this.aRoute = aRoute;
         this.text = "In this section you will find general legal information, self - help packets and videos on your rights as a<br />renter and what to do if you have a problem with your landlord.<a > http://www.washingtonlawhelp.org/issues/housing/tenants-rights</a>";
-        this.aciveBdg = 'tenant';
+        this.aciveBdg = 'tenantrights';
         this.OneClass = "collapse";
         this.TwoClass = "collapse";
         this.ThreeClass = "collapse";
         this.FourClass = "collapse";
+        this.routeUrl = "";
         this.currentUrl = '';
+        this.SubCat = [{
+                "id": "tenantrights",
+                "name": "tenantrights",
+                "text": "In this section you will find general legal information, self-help packets and videos on your rights as a <br />renter and what to do if you have a problem with your landlord.<a> http://www.washingtonlawhelp.org/issues/housing/tenants-rights</a>"
+            },
+            {
+                "id": "foreclosure",
+                "name": "foreclosure",
+                "text": "Browse the information below to find information about foreclosure prevention, foreclosure mediation and other foreclosure issues. <a>http://www.washingtonlawhelp.org/issues/housing/foreclosure-1</a>"
+            },
+            {
+                "id": "emergencyshelter",
+                "name": "emergencyshelter",
+                "text": "Browse the resources below to find general information and resources on emergency shelter and assistance in Washington state.  <a>http://www.washingtonlawhelp.org/issues/housing/emergency-shelter-assistance</a>"
+            },
+            {
+                "id": "mobileparktenants",
+                "name": "mobileparktenants",
+                "text": "Browse the resources below to find general information and resources on emergency shelter and assistance in Washington state.  <a>http://www.washingtonlawhelp.org/issues/housing/emergency-shelter-assistance</a>';"
+            }
+        ];
     }
     MRSComponent.prototype.ngOnInit = function () {
         this.currentUrl = this.router.url; // this will give you current url
-        console.log(this.currentUrl);
-        if (this.currentUrl == '/general/tenantrights') {
-            this.aciveBdg = 'tenant';
-            this.text = 'In this section you will find general legal information, self-help packets and videos on your rights as a <br />renter and what to do if you have a problem with your landlord.<a> http://www.washingtonlawhelp.org/issues/housing/tenants-rights</a>';
-            document.getElementById('tenant').scrollIntoView();
+        var route;
+        if (this.currentUrl.indexOf('general') > 0)
+            route = "general";
+        else if (this.currentUrl.indexOf('chat') > 0)
+            route = "chat";
+        else if (this.currentUrl.indexOf('guided') > 0)
+            route = "guided";
+        else
+            route = "general";
+        var position = this.currentUrl.indexOf("/", this.currentUrl.indexOf("/") + 1);
+        var str = this.currentUrl.substring(position + 1);
+        var arr = this.SubCat.find(function (x) { return x.id === str; });
+        if (arr != null && arr != undefined) {
+            this.aciveBdg = arr.id;
+            this.text = arr.text;
+            document.getElementById('subCat').scrollIntoView();
         }
-        else if (this.currentUrl == '/general/foreclosure') {
-            this.aciveBdg = 'foreclosure';
-            this.text = 'Browse the information below to find information about foreclosure prevention, foreclosure mediation and other foreclosure issues. <a>http://www.washingtonlawhelp.org/issues/housing/foreclosure-1</a>';
-            document.getElementById('foreclosure').scrollIntoView();
-        }
-        else if (this.currentUrl == '/general/emergencyshelter') {
-            this.aciveBdg = 'emergency';
-            this.text = 'Browse the resources below to find general information and resources on emergency shelter and assistance in Washington state.  <a>http://www.washingtonlawhelp.org/issues/housing/emergency-shelter-assistance</a>';
-            document.getElementById('emergency').scrollIntoView();
-        }
-        else if (this.currentUrl == '/general/mobileparktenants') {
-            this.aciveBdg = 'mobile';
-            this.text = 'In this section of Washington LawHelp you will find general information, self-help packets and resources for mobile home tenants. <a>http://www.washingtonlawhelp.org/issues/housing/mobile-home-park-tenants</a>';
-            document.getElementById('mobile').scrollIntoView();
-        }
-        if (this.currentUrl == '/general/QandA/4') {
+        if (this.currentUrl == '/' + route + '/QandA/4') {
             this.FourClass = "";
             document.getElementById('QandA').scrollIntoView();
         }
-        else if (this.currentUrl == '/general/QandA/3') {
+        else if (this.currentUrl == '/' + route + '/QandA/3') {
             this.ThreeClass = "";
             document.getElementById('QandA').scrollIntoView();
         }
-        else if (this.currentUrl == '/general/QandA/2') {
+        else if (this.currentUrl == '/' + route + '/QandA/2') {
             this.TwoClass = "";
             document.getElementById('QandA').scrollIntoView();
         }
-        else if (this.currentUrl == '/general/QandA/1') {
+        else if (this.currentUrl == '/' + route + '/QandA/1') {
             this.OneClass = "";
             document.getElementById('QandA').scrollIntoView();
         }
-        if (this.currentUrl == '/general/videos')
+        if (this.currentUrl == '/' + route + '/videos')
             document.getElementById('videos').scrollIntoView();
+        if (this.currentUrl == '/' + route + '/maps')
+            document.getElementById('maps').scrollIntoView();
     };
     MRSComponent.prototype.displayText = function (id) {
         this.aciveBdg = id;
-        if (this.aciveBdg == "tenant")
-            this.text = 'In this section you will find general legal information, self-help packets and videos on your rights as a <br />renter and what to do if you have a problem with your landlord.<a> http://www.washingtonlawhelp.org/issues/housing/tenants-rights</a>';
-        else if (this.aciveBdg == "foreclosure")
-            this.text = 'Browse the information below to find information about foreclosure prevention, foreclosure mediation and other foreclosure issues. <a>http://www.washingtonlawhelp.org/issues/housing/foreclosure-1</a>';
-        else if (this.aciveBdg == "emergency")
-            this.text = 'Browse the resources below to find general information and resources on emergency shelter and assistance in Washington state.  <a>http://www.washingtonlawhelp.org/issues/housing/emergency-shelter-assistance</a>';
-        else if (this.aciveBdg == "mobile")
-            this.text = 'In this section of Washington LawHelp you will find general information, self-help packets and resources for mobile home tenants. <a>http://www.washingtonlawhelp.org/issues/housing/mobile-home-park-tenants</a>';
+        var route;
+        if (this.currentUrl.indexOf('general') > 0)
+            route = "general";
+        else if (this.currentUrl.indexOf('chat') > 0)
+            route = "chat";
+        else if (this.currentUrl.indexOf('guided') > 0)
+            route = "guided";
         else
-            this.text = 'Sed elementum felis velit, et euismod nibh pellentesque sed.Curabitur nec cursus orci, non faucibus nisl. Ut vel gravida arcu.Quisque malesuada ut nibh vitae auctor. Pellentesque et massaaugue. Ut felis orci, condimentum ut pulvinar ut, posuere vitae erat.Nulla laoreet pulvinar diam non condimentum. Proin non liberoconvallis augue sodales malesuada. Quisque consectetur, magnaeget ultricies dictum, mauris ipsum ultrices ante, in aliquet nuncodio vel orci. Nam tristique fringilla est, et iaculis nisi fermentum a.Sed vel magna sit amet urna convallis sagittis at eu enim. Sedgravida diam a purus dictum, et faucibus lacus facilisis. In porttitorsollicitudin convallis. Sed blandit, tellus nec faucibus facilisis, urnanisi fringilla sapien, id condimentum dui velit imperdiet lectus.Quisque quam mi, molestie ac eros in, porta pharetra magna.liquam posuere porta pulvinar. Morbi mattis dolor mi, sit amet rhoncus sem volutpat eget. Vestibulum et nisl in erat posuere tristique in sedaugue. Quisque lorem elit, consequat nec commodo quis, faucibus non urna. Nulla facilisi. In gravida ultricies ante a hendrerit. Etiamaccumsan nisl massa, nec tincidunt justo mattis eu. In mattis sem libero, id euismod neque congue a. Pellentesque consequat in leo sedhendrerit. Suspendisse fringilla ligula in sem porttitor congue. Proin nec est non mi fringilla venenatis in at nulla. Nullam lectus urna,';
+            route = "general";
+        this.router.navigate(['/' + route, id]);
+        var arr = this.SubCat.find(function (x) { return x.id === id; });
+        if (arr != null && arr != undefined)
+            this.text = arr.text;
     };
     MRSComponent.prototype.collapsed = function (id) {
+        var route;
+        if (this.currentUrl.indexOf('general') > 0)
+            route = "general/QandA";
+        else if (this.currentUrl.indexOf('chat') > 0)
+            route = "chat/QandA";
+        else if (this.currentUrl.indexOf('guided') > 0)
+            route = "guided/QandA";
+        else
+            route = "general/QandA";
+        this.router.navigate(['/' + route, id]);
         this.OneClass = "collapse";
         this.TwoClass = "collapse";
         this.ThreeClass = "collapse";
         this.FourClass = "collapse";
-        if (id == 'headingFour')
+        if (id == '1')
             this.FourClass = "";
-        else if (id == 'headingThree')
+        else if (id == '2')
             this.ThreeClass = "";
-        else if (id == 'headingTwo')
+        else if (id == '3')
             this.TwoClass = "";
-        else if (id == 'headingOne')
+        else if (id == '4')
             this.OneClass = "";
+    };
+    MRSComponent.prototype.videos = function (id) {
+        var route;
+        if (this.currentUrl.indexOf('general') > 0)
+            route = "general";
+        else if (this.currentUrl.indexOf('chat') > 0)
+            route = "chat";
+        else if (this.currentUrl.indexOf('guided') > 0)
+            route = "guided";
+        else
+            route = "general";
+        this.router.navigate(['/' + route, id]);
+    };
+    MRSComponent.prototype.maps = function (id) {
+        var route;
+        if (this.currentUrl.indexOf('general') > 0)
+            route = "general";
+        else if (this.currentUrl.indexOf('chat') > 0)
+            route = "chat";
+        else if (this.currentUrl.indexOf('guided') > 0)
+            route = "guided";
+        else
+            route = "general";
+        this.router.navigate(['/' + route, id]);
     };
     return MRSComponent;
 }());
@@ -97,7 +155,7 @@ MRSComponent = __decorate([
         selector: 'mrs',
         templateUrl: './mrs.component.html',
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, core_1.ElementRef])
 ], MRSComponent);
 exports.MRSComponent = MRSComponent;
 //# sourceMappingURL=mrs.component.js.map

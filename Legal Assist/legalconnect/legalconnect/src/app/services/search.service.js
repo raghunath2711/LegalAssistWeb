@@ -21,13 +21,11 @@ var SearchService = (function () {
         this.tokenUrl = 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken';
         this.translateUrl = 'https://api.microsofttranslator.com/V2/Http.svc/Translate';
     }
-    SearchService.prototype.getSearchUrls = function () {
-        return this._http.post(this.searchUrl, { Sentence: 'I can not pay my rent on time' }).map(function (res) { return (res.json()); });
-    };
     SearchService.prototype.getChatMessages = function (query, lang, country) {
         return this._http.post(this.chatMessageUrl, { Topic: query, Title: query, State: country }).map(function (res) { return (res.json()); });
     };
     SearchService.prototype.getChatReferences = function (query, country) {
+        console.log(country);
         return this._http.post(this.chatRefUrl, { Sentence: query, State: country }).map(function (res) { return (res.json()); });
     };
     SearchService.prototype.TranslateToken = function () {
