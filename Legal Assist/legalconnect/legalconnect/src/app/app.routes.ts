@@ -1,4 +1,4 @@
-﻿import { ModuleWithProviders  } from '@angular/core';
+﻿import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { DemoComponent } from './demo/demo.component';
@@ -18,8 +18,15 @@ const routes: Routes = [
     { path: 'chat', component: ChatComponent },
     { path: 'chat/:id', component: ChatComponent },
     { path: 'timeline', component: TLComponent },
+    { path: 'guided/assist/begin', component: GuidedComponent },
+    { path: 'guided/assist/evictionnotice', component: GuidedComponent },
+    { path: 'guided/assist/aboutnotice', component: GuidedComponent },
+    { path: 'guided/assist/assistnotice', component: GuidedComponent },
+    { path: 'guided/assist/housingproblem', component: GuidedComponent },
     { path: '', component: GeneralComponent },
     { path: '**', component: GeneralComponent },
+
 ];
+
 //export const routing = RouterModule.forRoot(routes);
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

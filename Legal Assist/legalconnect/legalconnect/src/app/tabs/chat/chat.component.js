@@ -68,7 +68,7 @@ var ChatComponent = (function () {
                         "time": time,
                         "class": "receive"
                     });
-                }, 1000);
+                }, 100);
                 _this.showMessage = false;
             }, function (err) {
                 _this.showMessage = false;

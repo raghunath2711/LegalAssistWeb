@@ -15,6 +15,11 @@ var routes = [
     { path: 'chat', component: chat_component_1.ChatComponent },
     { path: 'chat/:id', component: chat_component_1.ChatComponent },
     { path: 'timeline', component: timeline_component_1.TLComponent },
+    { path: 'guided/assist/begin', component: guided_component_1.GuidedComponent },
+    { path: 'guided/assist/evictionnotice', component: guided_component_1.GuidedComponent },
+    { path: 'guided/assist/aboutnotice', component: guided_component_1.GuidedComponent },
+    { path: 'guided/assist/assistnotice', component: guided_component_1.GuidedComponent },
+    { path: 'guided/assist/housingproblem', component: guided_component_1.GuidedComponent },
     { path: '', component: general_component_1.GeneralComponent },
     { path: '**', component: general_component_1.GeneralComponent },
 ];

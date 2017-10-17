@@ -69,7 +69,7 @@ export class ChatComponent {
                                 "time": time,
                                 "class": "receive"
                             })
-                        }, 1000);
+                        }, 100);
                         this.showMessage = false;
                        
                       
