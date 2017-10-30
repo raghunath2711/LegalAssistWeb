@@ -16,28 +16,62 @@
                 <div class="row list-container" id="Slide1" [ngClass]="{'activeSlide': activeSld=='Slide1','hideSlide': activeSld!='Slide1'}">
                     <div class="col-md-6 col-md-offset-3 faq-list">
                         <div class="item guided text-center">
-                            <h2 class="m-bottom-20">Guided Assistent</h2>
+                            <h2 class="m-bottom-20">Guided Assistant</h2>
                             <p class="font16">We would like to make your search easier by providing a few simple steps.</p>
-                            <button class="btn lp-btn-3 active m-top-40" type="button" (click)="ShowNextNavigation('Slide2')" [routerLink]="['/guided/assist/evictionnotice']">Begin</button>
+                            <button class="btn lp-btn-3 active m-top-40" type="button" (click)="ShowNextNavigation('Slide2','evictionnotice')" >Begin</button>
                         </div>
                     </div>
                 </div>
+
+                <!--<div id={{stp.id}} class="list-container" *ngFor="let stp of steps">
+                    <div class="row faq-list">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="item text-center">
+                                <h4>{{stp.question}}</h4>
+                                <div *ngIf="stp.type==='button'">
+                                    <div class="rdo-group">
+                                        <button class="btn btn-default lp-btn-4 m-right-10" type="button" data-slide="next" (click)="ShowNextNavigation(stp.id,stp.title)" href="#myCarousel" *ngFor="let btn of stp.options">{{btn.name}}</button>
+
+                                    </div>
+                                  </div>
+                                <div *ngIf="stp.type==='radio'">
+                                    <div class="rdo-group text-align-left">
+                                        <label class="radio-inline" *ngFor="let rad of stp.options">
+                                            <input type="radio"  name="rr" />
+                                            <label ><span></span>{{rad.name}}</label>
+                                        </label>
+                                        
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel" (click)="ShowNextNavigation('Slide1','begin')">Back</button>
+                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel" (click)="ShowNextNavigation('Slide2','evictionnotice')">Back</button>
+                        <button class="right pull-right btn lp-btn-3 active" type="button" data-slide="next" href="#myCarousel" (click)="ShowNextNavigation('Slide4','assistnotice')">Next</button>
+                        <button class="right pull-right btn btn-link lnk-btn" type="button" data-slide="next" href="#myCarousel" (click)="ShowSkipNavigation('Slide4','assistnotice')">Skip</button>
+
+                    </div>
+                </div>-->
+
                 <div id="Slide2" class="list-container" [ngClass]="{'activeSlide': activeSld=='Slide2','hideSlide': activeSld!='Slide2'}">
                     <div class="row faq-list">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="item text-center">
                                 <h4>Have you received and eviction notice ?</h4>
                                 <div class="rdo-group">
-                                    <button class="btn btn-default lp-btn-4 m-right-10" type="button" data-slide="next" [routerLink]="['/guided/assist/housingproblem']" (click)="ShowNextNavigation('Slide5')" href="#myCarousel">No</button>
+                                    <button class="btn btn-default lp-btn-4 m-right-10" type="button" data-slide="next" (click)="ShowNextNavigation('Slide5','housingproblem')" href="#myCarousel">No</button>
 
-                                    <button class="btn btn-default lp-btn-4 active" type="button" data-slide="next" href="#myCarousel" [routerLink]="['/guided/assist/aboutnotice']" (click)="ShowNextNavigation('Slide3')">Yes</button>
+                                    <button class="btn btn-default lp-btn-4 active" type="button" data-slide="next" href="#myCarousel"  (click)="ShowNextNavigation('Slide3','aboutnotice')">Yes</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel" [routerLink]="['/guided/assist/begin']" (click)="ShowNextNavigation('Slide1')">Back</button>
+                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  (click)="ShowNextNavigation('Slide1','begin')">Back</button>
 
                     </div>
                 </div>
@@ -58,7 +92,7 @@
                                         </label>
                                         <label class="radio-inline">
                                             <input type="radio" id="radio3" name="rr" />
-                                            <label for="radio3"><span></span>I have children and pay the rent</label>
+                                            <label for="radio3"><span></span>I have children and i cannot pay rent</label>
                                         </label>
                                     </div>
 
@@ -66,9 +100,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel" [routerLink]="['/guided/assist/evictionnotice']"  (click)="ShowNextNavigation('Slide2')">Back</button>
-                            <button class="right pull-right btn lp-btn-3 active" type="button" data-slide="next" href="#myCarousel" [routerLink]="['/guided/assist/assistnotice']"  (click)="ShowNextNavigation('Slide4')">Next</button>
-                            <button class="right pull-right btn btn-link lnk-btn" type="button" data-slide="next" href="#myCarousel" [routerLink]="['/guided/assist/assistnotice']"  (click)="ShowSkipNavigation('Slide4')">Skip</button>
+                            <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  (click)="ShowNextNavigation('Slide2','evictionnotice')">Back</button>
+                            <button class="right pull-right btn lp-btn-3 active" type="button" data-slide="next" href="#myCarousel"   (click)="ShowNextNavigation('Slide4','assistnotice')">Next</button>
+                            <button class="right pull-right btn btn-link lnk-btn" type="button" data-slide="next" href="#myCarousel"   (click)="ShowSkipNavigation('Slide4','assistnotice')">Skip</button>
                         </div>
 
 
@@ -80,7 +114,7 @@
                     <div class="row faq-list">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="item active text-center">
-                                <h4>Have can assist you with your notice ?</h4>
+                                <h4>How can i assist you with your notice?</h4>
                                 <div class="rdo-group text-align-left">
                                     <label class="radio-inline">
                                         <input type="radio" id="radio4" name="scan" />
@@ -96,7 +130,7 @@
                     </div>
 
                     <div class="row">
-                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  [routerLink]="['/guided/assist/aboutnotice']" (click)="ShowNextNavigation('Slide3')">Back</button>
+                        <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  (click)="ShowNextNavigation('Slide3','aboutnotice')">Back</button>
                         <a class="right pull-right btn lp-btn-3 active" type="button" routerLink="/timeline">Next</a>
                         <!--<button class="right pull-right btn btn-link lnk-btn" type="button" data-slide="next" href="#myCarousel" onclick="return false;">Skip</button>-->
                     </div>
@@ -128,7 +162,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  [routerLink]="['/guided/assist/evictionnotice']"  (click)="ShowNextNavigation('Slide2')">Back</button>
+                            <button class="left btn btn-link lnk-btn-back" type="button" data-slide="prev" href="#myCarousel"  (click)="ShowNextNavigation('Slide2','evictionnotice')">Back</button>
                         </div>
                     </div>
                 </div>

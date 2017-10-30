@@ -11,5 +11,10 @@ export class HeaderComponent {
     dispalyDiv() {
         this.showDiv = true;
     }
+    returnToChat()
+    {
+        localStorage.setItem('returnFlag', 'true');
+       // this.router.navigate(['/chat'] , { queryParams: { returnFlag: true } });
+    }
 }
 

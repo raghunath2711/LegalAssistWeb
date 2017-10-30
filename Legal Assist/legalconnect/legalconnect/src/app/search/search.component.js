@@ -28,6 +28,7 @@ var SearchComponent = (function () {
             "apartment eviction process",];
     }
     SearchComponent.prototype.redirect = function () {
+        localStorage.setItem('returnFlag', 'false');
         this.router.navigateByUrl("demo");
     };
     SearchComponent.prototype.valueChanged = function (newVal) {

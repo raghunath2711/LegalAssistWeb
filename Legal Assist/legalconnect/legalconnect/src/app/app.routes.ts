@@ -1,4 +1,4 @@
-﻿import { ModuleWithProviders } from '@angular/core';
+﻿import { ModuleWithProviders  } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { DemoComponent } from './demo/demo.component';
@@ -10,23 +10,21 @@ import { ChatComponent } from './tabs/chat/chat.component';
 import { TLComponent } from './tabs/timeline/timeline.component';
 
 const routes: Routes = [
+    { path: 'search', component: SearchComponent },
     { path: 'demo', component: DemoComponent },
     { path: 'general', component: GeneralComponent },
     { path: 'guided', component: GuidedComponent },
+    { path: 'general/:id', component: GuidedComponent },
+    { path: 'general/QandA/:id', component: GuidedComponent },
     { path: 'guided/:id', component: GuidedComponent },
+    { path: 'guided/QandA/:id', component: GuidedComponent },
+    { path: 'guided/assist/:id', component: GuidedComponent },
     { path: 'doc', component: DocComponent },
     { path: 'chat', component: ChatComponent },
     { path: 'chat/:id', component: ChatComponent },
+    { path: 'chat/QandA/:id', component: ChatComponent },
     { path: 'timeline', component: TLComponent },
-    { path: 'guided/assist/begin', component: GuidedComponent },
-    { path: 'guided/assist/evictionnotice', component: GuidedComponent },
-    { path: 'guided/assist/aboutnotice', component: GuidedComponent },
-    { path: 'guided/assist/assistnotice', component: GuidedComponent },
-    { path: 'guided/assist/housingproblem', component: GuidedComponent },
-    { path: '', component: GeneralComponent },
-    { path: '**', component: GeneralComponent },
-
+    { path: '', redirectTo: '/search', pathMatch: 'full' },
+    { path: '**', component: SearchComponent },
 ];
-
-//export const routing = RouterModule.forRoot(routes);
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

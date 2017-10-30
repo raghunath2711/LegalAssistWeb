@@ -18,6 +18,7 @@ var SearchService = (function () {
         this.searchUrl = 'http://contentsextractionapi.azurewebsites.net/api/ExtractContents';
         this.chatMessageUrl = 'http://contentsextractionapi.azurewebsites.net/api/ExtractContents';
         this.chatRefUrl = 'http://contentsextractionapi.azurewebsites.net/api/ExtractSubTopics';
+        this.chatFileUploadUrl = 'http://contentsextractionapi.azurewebsites.net/api/ExtractTextsFromHttpFileBase';
         this.tokenUrl = 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken';
         this.translateUrl = 'https://api.microsofttranslator.com/V2/Http.svc/Translate';
     }
@@ -28,15 +29,22 @@ var SearchService = (function () {
         console.log(country);
         return this._http.post(this.chatRefUrl, { Sentence: query, State: country }).map(function (res) { return (res.json()); });
     };
+    SearchService.prototype.getfileUpload = function (data) {
+        console.log('data', data);
+        var headers = new http_1.Headers();
+        headers.append('contentType', 'false');
+        //    headers.append( 'Content-Type', 'application/json' );
+        headers.append('processData', 'false');
+        return this._http.post(this.chatFileUploadUrl, data, { headers: headers }).map(function (res) { return (res.json()); });
+        // return this._http.post(this.chatFileUploadUrl, data).map((res: Response) => (console.log(res.json())));
+        // return this._http.post(this.chatFileUploadUrl, { data: data, contentType: false, processData: false } ).map((res: Response) => (res.json()));
+    };
     SearchService.prototype.TranslateToken = function () {
         var headers = new http_1.Headers();
         headers.append('Ocp-Apim-Subscription-Key', 'f79c9411ee6d4daba6bb9aff008fe2eb');
         return '12345'; // this._http.post(this.tokenUrl, { headers:headers }).map((res: Response) => (res.json()));
     };
     SearchService.prototype.TranslateText = function (query, lang) {
-        //let params = new URLSearchParams();
-        //params.set('Text', query);
-        //params.set('from', 'en');
         var token = this.TranslateToken();
         console.log('token', token);
         var appid = "Bearer" + token;

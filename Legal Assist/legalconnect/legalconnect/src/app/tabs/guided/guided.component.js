@@ -11,6 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var GuidedComponent = (function () {
+    //    "id": "2",
+    //    "question": "Tell me more about your eviction notice",
+    //    "type":"radio",
+    //    "options": ["I need help understanding the notice", "I need to talk to someone for assistance","I have children and pay the rent"]
+    //},
+    //{
+    //    "id": "3",
+    //    "question": "Have can assist you with your notice ?",
+    //    "type":"radio",
+    //    "options": ["Scan your notice ?", "Chat with representative", "Call the eviction hotline"]
+    //},
+    //{
+    //    "id": "4",
+    //    "question": "Which of these is your housing problem?",
+    //    "type":"radio",
+    //    "options": ["My rental is in poor condition", "My land lord is abusive", "I have dispute with my neighbour", "My landlord has raised my rent","My land lord has changed the rental rules"]
+    //}
+    //]
     function GuidedComponent(router, _el) {
         this.router = router;
         this._el = _el;
@@ -20,12 +38,13 @@ var GuidedComponent = (function () {
         this.TwoClass = "collapse";
         this.ThreeClass = "collapse";
         this.FourClass = "collapse";
+        this.routeUrl = "";
         this.currentUrl = '';
         this.activeSld = "Slide1";
         this.myClass = "aciveSlide";
+        this.ctrType = "button";
     }
     GuidedComponent.prototype.ngOnInit = function () {
-        //window.scrollTo(500, 1000);
         console.log('top:', this._el.nativeElement.offsetTop);
         this.currentUrl = this.router.url; // this will give you current url
         if (this.currentUrl == '/guided/assist/evictionnotice')
@@ -39,11 +58,33 @@ var GuidedComponent = (function () {
         else if (this.currentUrl == '/guided/assist/assistnotice')
             this.activeSld = "Slide4";
     };
-    GuidedComponent.prototype.ShowNextNavigation = function (sld) {
+    GuidedComponent.prototype.ShowNextNavigation = function (sld, title) {
         this.activeSld = sld;
+        this.router.navigate(['/guided/assist', title]);
+        //if (sld == 'Slide1') {
+        //   // this.steps = [];
+        //    this.steps.push({
+        //        "id": "Slide2",
+        //        "question": "Have you received and eviction notice ?",
+        //        "type": "button",
+        //        "title": "evictionnotice",
+        //        "options": [{ "name": "Yes" }, { "name": "No" }]
+        //    });
+        //}
+        //  if (sld == 'Slide2')
+        //  {
+        //      this.steps.id = "Slide3";
+        //      this.steps.question = "Tell me more about your eviction notice";
+        //      this.steps.type: "radio", "title": "housingproblem", "options": [{ "name": "I need help understanding the notice" }, { "name": "I need to talk to someone for assistance" }, { "name": "I have children and pay the rent" }]
+        //  });
+        //  }
+        //  console.log(this.steps.title);
+        ////  this.activeSld = this.steps[0].id;
+        //  this.router.navigate(['/guided/assist', this.steps.title]);
     };
-    GuidedComponent.prototype.ShowSkipNavigation = function (sld) {
+    GuidedComponent.prototype.ShowSkipNavigation = function (sld, title) {
         this.activeSld = sld;
+        this.router.navigate(['/guided/assist', title]);
     };
     GuidedComponent.prototype.ValidateContent = function (param) {
         this.myClass = param;

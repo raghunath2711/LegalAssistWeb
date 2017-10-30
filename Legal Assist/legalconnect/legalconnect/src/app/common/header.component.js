@@ -19,6 +19,10 @@ var HeaderComponent = (function () {
     HeaderComponent.prototype.dispalyDiv = function () {
         this.showDiv = true;
     };
+    HeaderComponent.prototype.returnToChat = function () {
+        localStorage.setItem('returnFlag', 'true');
+        // this.router.navigate(['/chat'] , { queryParams: { returnFlag: true } });
+    };
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([

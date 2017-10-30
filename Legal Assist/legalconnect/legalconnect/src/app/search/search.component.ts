@@ -30,6 +30,7 @@ export class SearchComponent {
     constructor(private router: Router) { }
 
     redirect() {
+        localStorage.setItem('returnFlag', 'false');
         this.router.navigateByUrl("demo");
     }
 

@@ -13,19 +13,37 @@ export class GuidedComponent implements OnInit{
     TwoClass = "collapse";
     ThreeClass = "collapse"
     FourClass = "collapse";
-
+    routeUrl: string = "";
 
     currentUrl: string = '';
 
     activeSld: string = "Slide1";
     myClass: string = "aciveSlide";
-
+    ctrType: string = "button";
+    steps: { "id": "Slide2", "question": "Have you received and eviction notice ?", "type": "button", "title":"evictionnotice", "options": [{ "name": "Yes" }, { "name": "No" }] }    //{
+    //    "id": "2",
+    //    "question": "Tell me more about your eviction notice",
+    //    "type":"radio",
+    //    "options": ["I need help understanding the notice", "I need to talk to someone for assistance","I have children and pay the rent"]
+    //},
+    //{
+    //    "id": "3",
+    //    "question": "Have can assist you with your notice ?",
+    //    "type":"radio",
+    //    "options": ["Scan your notice ?", "Chat with representative", "Call the eviction hotline"]
+    //},
+    //{
+    //    "id": "4",
+    //    "question": "Which of these is your housing problem?",
+    //    "type":"radio",
+    //    "options": ["My rental is in poor condition", "My land lord is abusive", "I have dispute with my neighbour", "My landlord has raised my rent","My land lord has changed the rental rules"]
+    //}
+   //]
     constructor(private router: Router, private _el: ElementRef) { }
 
     ngOnInit() {
    
-        //window.scrollTo(500, 1000);
-      
+        
         console.log('top:', this._el.nativeElement.offsetTop);
         this.currentUrl = this.router.url; // this will give you current url
 
@@ -45,19 +63,46 @@ export class GuidedComponent implements OnInit{
       
        
     }
-
-    
-    ShowNextNavigation(sld:string)
-    {
-  
-        this.activeSld = sld;
         
+    ShowNextNavigation(sld:string,title:string)
+    {
+
+        this.activeSld = sld;
+        this.router.navigate(['/guided/assist', title]);
+
+        //if (sld == 'Slide1') {
+        //   // this.steps = [];
+        //    this.steps.push({
+        //        "id": "Slide2",
+        //        "question": "Have you received and eviction notice ?",
+        //        "type": "button",
+        //        "title": "evictionnotice",
+        //        "options": [{ "name": "Yes" }, { "name": "No" }]
+        //    });
+
+        //}
+      
+      //  if (sld == 'Slide2')
+      //  {
+         
+      //      this.steps.id = "Slide3";
+      //      this.steps.question = "Tell me more about your eviction notice";
+      //      this.steps.type: "radio", "title": "housingproblem", "options": [{ "name": "I need help understanding the notice" }, { "name": "I need to talk to someone for assistance" }, { "name": "I have children and pay the rent" }]
+      //  });
+       
+      //  }
+      //  console.log(this.steps.title);
+      ////  this.activeSld = this.steps[0].id;
+      //  this.router.navigate(['/guided/assist', this.steps.title]);
+      
     }   
 
-    ShowSkipNavigation(sld:string)
+    ShowSkipNavigation(sld: string, title: string)
    {
         this.activeSld = sld;
+        this.router.navigate(['/guided/assist', title]);
     }
+
     ValidateContent(param:string)
     {   
         this.myClass =param;
